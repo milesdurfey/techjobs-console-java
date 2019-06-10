@@ -61,8 +61,12 @@ public class TechJobs {
                 String searchTerm = in.nextLine();
 
                 if (searchField.equals("all")) {
-                    System.out.println("Search all fields not yet implemented.");
+                    //Miles to fill this in
+                    //System.out.println("Search all fields not yet implemented.");
+                    //using printJobs above based on job data and the findByValue over on the JobData page -- all
+                    printJobs(JobData.findByValue(searchTerm));
                 } else {
+                    //using printJobs above based on job data and the findByValue over on the JobData page by searchTerm
                     printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
                 }
             }
@@ -108,9 +112,26 @@ public class TechJobs {
         return choiceKeys[choiceIdx];
     }
 
-    // Print a list of jobs
+    // Print a Hashmap of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
 
-        System.out.println("printJobs is not implemented yet");
+//      Miles to fill this in...
+//        System.out.println("printJobs is not implemented yet");
+//      If data to print (aka .size() > 0), want to print through the hash map by index using an index number named "key".
+//      After getting printJobs from above add to Hashmap for printing. SearchJob is what we want and someJobs is the 'master list' of jobs.
+//      Also, assignment wants the data to appear between "*****"
+        if (someJobs.size() > 0){
+            for (HashMap<String, String> searchjob : someJobs) {
+                System.out.println("*****");
+                for (String key : searchjob.keySet()) {
+                    System.out.println(key + ": "+ searchjob.get(key));
+                }
+                System.out.println("*****");
+            }
+        }
+//      If nothing, need to print a message saying no results.
+        else {
+            System.out.println("Sorry, no results!");
+        }
     }
 }
